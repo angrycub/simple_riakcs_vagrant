@@ -1,16 +1,8 @@
-# Vagrant Riak CS Cluster
+# Simple Riak CS Vagrant Cluster
 
 This is a Vagrant project using shell-script provisioning to bring up a local [Riak
 CS](https://github.com/basho/riak_cs) cluster. Each node runs 
 `CentOS 6.5` 64-bit with `1024MB` of RAM by default.
-
-## Description 
-
-This repository is **community supported**. We both appreciate and need your
-contribution to keep it stable. For more on how to contribute,
-[take a look at the contribution process](#contribution).
-
-Thank you for being part of the community! We love you for it.
 
 ## Configuration
 
@@ -40,7 +32,7 @@ $ vagrant up
 -->
 ### Test cluster
 
-\<\<TODO>> The provisioning script will create an .s3cfg file in the **vagrant** user's home directory with the correct settings for this cluster's Riak CS configuration.  The changes are described below:
+The provisioning script will create an .s3cfg file in the **vagrant** user's home directory with the correct settings for this cluster's Riak CS configuration.  The changes are described below:
 
 * **Access Key** - Replaced with generated values from provisioning.
 * **Secret Key** - Replaced with generated values from provisioning
@@ -57,7 +49,7 @@ $ s3cmd mb s3://test-bucket
 
 ## Contribution
 
-Basho Labs repos survive because of community contribution. Here’s how to get started.
+Community supported repos survive because of community contribution. Here’s how to get started.
 
 * Fork the appropriate sub-projects that are affected by your change
 * Create a topic branch for your change and checkout that branch
@@ -68,4 +60,4 @@ Basho Labs repos survive because of community contribution. Here’s how to get 
 * Maintainers will review your pull request, suggest changes, and merge it when it’s ready and/or offer feedback
 * To report a bug or issue, please open a new issue against this repository
 
-You can [read the full guidelines for bug reporting and code contributions](http://docs.basho.com/riak/latest/community/bugs/) on the Riak Docs. And **thank you!** Your contribution is incredible important to us.
+You can [read my favorite guidelines for bug reporting and code contributions](http://docs.basho.com/riak/latest/community/bugs/) on the Riak Docs. And **thank you!** Your contribution is incredible important.
