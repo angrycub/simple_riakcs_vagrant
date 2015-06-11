@@ -1,7 +1,7 @@
 #! /bin/bash
 
-echo Configuring Node as $1...
-echo * Increasing File Limits
+echo "Configuring Node as $1..."
+echo "* Increasing File Limits"
 echo '
 # Added by Vagrant Provisioning Script
 # ulimit settings for Riak CS
@@ -15,7 +15,19 @@ stanchion soft nofile 65536
 stanchion hard nofile 65536
 '  >> /etc/security/limits.conf
 
-echo * Riak
+echo "* Adding sysctls"
+echo '
+%% Added by Vagrant Provisioning Script' >> /etc/sysctl.conf
+echo "vm.swappiness = 0" >> /etc/sysctl.conf
+
+echo "* Tuning the block device"
+echo '
+%% Added by Vagrant Provisioning Script' >> /etc/rc.local
+echo "echo noop > /sys/block/sda/queue/scheduler" >> /etc/rc.local
+echo "echo 1024 > /sys/block/sda/queue/nr_requests" >> /etc/rc.local
+
+echo ""
+echo "* Riak"
 echo '
 # Added by Vagrant Provisioning Script'  >> /etc/riak/riak.conf
 echo "nodename = riak@$1" >> /etc/riak/riak.conf
@@ -25,7 +37,7 @@ echo '
 echo '
 [
  {riak_kv, [
-              {add_paths, ["/usr/lib64/riak-cs/lib/riak_cs-2.0.0/ebin"]},
+              {add_paths, ["/usr/lib64/riak-cs/lib/riak_cs-2.0.1/ebin"]},
               {storage_backend, riak_cs_kv_multi_backend},
               {multi_backend_prefix_list, [{<<"0b:">>, be_blocks}]},
               {multi_backend_default, be_default},
@@ -42,14 +54,14 @@ echo '
 ].
 ' >> /etc/riak/advanced.config
 
-echo * Riak CS
+echo "* Riak CS"
 echo '
 # Added by Vagrant Provisioning Script' >> /etc/riak-cs/riak-cs.conf
 echo "nodename = riak-cs@$1" >> /etc/riak-cs/riak-cs.conf
 echo "listener = 0.0.0.0:8080" >> /etc/riak-cs/riak-cs.conf
 echo "stanchion_host = 192.168.33.11:8085" >> /etc/riak-cs/riak-cs.conf
 
-echo * Stanchion
+echo "* Stanchion"
 echo '
 # Added by Vagrant Provisioning Script' >> /etc/stanchion/stanchion.conf
 echo "nodename = stanchion@$1" >> /etc/stanchion/stanchion.conf
