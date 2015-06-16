@@ -59,7 +59,7 @@ echo '
 # Added by Vagrant Provisioning Script' >> /etc/riak-cs/riak-cs.conf
 echo "nodename = riak-cs@$1" >> /etc/riak-cs/riak-cs.conf
 echo "listener = 0.0.0.0:8080" >> /etc/riak-cs/riak-cs.conf
-echo "stanchion_host = 192.168.33.11:8085" >> /etc/riak-cs/riak-cs.conf
+echo "stanchion_host = $2:8085" >> /etc/riak-cs/riak-cs.conf
 
 echo "* Stanchion"
 echo '
