@@ -15,3 +15,10 @@ cat /vagrant_data/s3cfg.template |
     sed "s/{{admin_key}}/`/usr/local/bin/jq -r .key_id /vagrant_data/work/admin.json`/" | 
     sed "s/{{admin_secret}}/`/usr/local/bin/jq -r .key_secret /vagrant_data/work/admin.json`/" > /home/vagrant/.s3cfg
 chown vagrant:vagrant /home/vagrant/.s3cfg
+
+echo "* Configuring s3curl"
+cat /vagrant_data/s3curl.template | 
+    sed "s/{{admin_key}}/`/usr/local/bin/jq -r .key_id /vagrant_data/work/admin.json`/" | 
+    sed "s/{{admin_secret}}/`/usr/local/bin/jq -r .key_secret /vagrant_data/work/admin.json`/" > /home/vagrant/.s3curl
+chown vagrant:vagrant /home/vagrant/.s3curl
+chmod 600 /home/vagrant/.s3curl

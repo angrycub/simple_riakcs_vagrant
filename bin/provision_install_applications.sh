@@ -32,6 +32,14 @@ echo "* Installing s3cmd"
 cp /vagrant_data/s3tools.repo /etc/yum.repos.d
 yum -y -q install s3cmd
 
+echo "* Installing s3curl"
+echo "    - Installing dependency perl"
+yum -y -q install perl perl-Digest-HMAC
+echo "    - Installing s3curl.pl"
+cp /vagrant_data/s3curl.pl /usr/local/bin
+chmod +x /usr/local/bin/s3curl.pl
+ln -s /usr/local/bin/s3curl.pl /usr/local/bin/s3curl
+
 echo "* Installing jq"
 cp /vagrant_data/jq /usr/local/bin
 chmod +x /usr/local/bin/jq
