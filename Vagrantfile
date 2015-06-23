@@ -14,6 +14,7 @@ FIRST_NODE = "10.202.77.23"
   config.vm.define "node1" do |node1|
     node1.vm.hostname = "node1.local"
     node1.vm.network "private_network", ip: "10.202.77.23"
+    node1.vm.network "public_network"
     node1.vm.provision "configure_node", type: "shell", path: "bin/provision_configure_node.sh", args: ["10.202.77.23",FIRST_NODE]
     node1.vm.provision "start_services", type: "shell", path: "bin/provision_start_services.sh"
     node1.vm.provision "create_admin_user", type: "shell", path: "bin/provision_create_admin_user.sh"

@@ -23,7 +23,7 @@ fi
 
 
 echo "* Installing Riak, Stanchion, Riak CS"
-yum -y --nogpgcheck --noplugins -q localinstall \
+yum -y --nogpgcheck --noplugins localinstall \
  /vagrant_data/riak-2.0.5-1.el6.x86_64.rpm \
  /vagrant_data/riak-cs-2.0.1-1.el6.x86_64.rpm \
  /vagrant_data/stanchion-2.0.0-1.el6.x86_64.rpm
