@@ -20,6 +20,7 @@ FIRST_NODE = "10.202.77.23"
     node1.vm.provision "configure_admin_user", type: "shell", path: "bin/provision_configure_admin_user.sh"
     node1.vm.provision "stop_services", type: "shell", path: "bin/provision_stop_services.sh"
     node1.vm.provision "start_services2", type: "shell", path: "bin/provision_start_services.sh"
+    node1.vm.provision "xip_io", type: "shell", path: "bin/provision_xip_io.sh"
  end
 
   config.vm.define "node2" do |node2|

@@ -8,6 +8,10 @@ echo "anonymous_user_creation = on" >> /etc/riak-cs/riak-cs.conf
 echo "* Starting Riak CS"
 riak-cs start
 echo "* Making User"
+if [ ! -d /vagrant_data/work ] 
+  then
+    mkdir /vagrant_data/work
+fi
 curl -s -XPOST http://127.0.0.1:8080/riak-cs/user \
      -H 'Content-Type: application/json' \
      -d '{"email":"admin@admin.com", "name":"admin"}' > /vagrant_data/work/admin.json
